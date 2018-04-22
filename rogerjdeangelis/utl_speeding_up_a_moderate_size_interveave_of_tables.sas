@@ -92,9 +92,9 @@ data grp2;
 
    set
        a1_:
-       b(where=( key < 2000000001)
-       c(where=( key < 2000000001)
-       d(where=( key < 2000000001)
+       b(where=(100000000 <  key < 2000000001)
+       c(where=(100000000 <  key < 2000000001)
+       d(where=(100000000 <  key < 2000000001)
    ;
    by key;
 

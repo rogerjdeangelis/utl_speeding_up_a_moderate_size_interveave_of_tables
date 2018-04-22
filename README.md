@@ -29,7 +29,7 @@ Speeding up a moderate size interveave of tables. Keywords: sas sql join merge b
 
     If the numeric key is not badly skewed, then do the following when segmenting the 280 million.
     You do need some information about the skew of the numeric key, maybe use a previous run;
-    If skewed and you need to know the distribution amybe from a previous run you can cut appropreately.
+    If skewed and you need to know the distribution amybe from a previous run you can cut wisely.
     This is what teradata does.
 
     I suspect the problem centers around the 280 million csv.
@@ -99,9 +99,9 @@ Speeding up a moderate size interveave of tables. Keywords: sas sql join merge b
 
        set
            a1_:
-           b(where=( key < 2000000001)
-           c(where=( key < 2000000001)
-           d(where=( key < 2000000001)
+           b(where=(100000000 < key < 2000000001)
+           c(where=(100000000 <  key < 2000000001)
+           d(where=(100000000 <  key < 2000000001)
        ;
        by key;
 
@@ -112,7 +112,9 @@ Speeding up a moderate size interveave of tables. Keywords: sas sql join merge b
     * having the pieces on separated disks may be a benfefit when doing analyticcs:
     
 * do not know about recency and locality reference relation to key;
-
+* view should be almos as fast as a dataset?
+* having the pieces on separated disks may be a benfefit when doing analyticcs;
+* do not know about recency and locality reference relation to key;
 
     data combine/(view=combine);
       set

@@ -1,6 +1,8 @@
 # utl_speeding_up_a_moderate_size_interveave_of_tables
 Speeding up a moderate size interveave of tables. Keywords: sas sql join merge big data analytics macros oracle teradata mysql sas communities stackoverflow statistics artificial inteligence AI Python R Java Javascript WPS Matlab SPSS Scala Perl C C# Excel MS Access JSON graphics maps NLP natural language processing machine learning igraph DOSUBL DOW loop stackoverflow SAS community.
     Speeding up a moderate size interveave of tables.
+    
+    Added another possible enhancement
 
     github
     https://tinyurl.com/yan6rkve
@@ -115,9 +117,23 @@ Speeding up a moderate size interveave of tables. Keywords: sas sql join merge b
 * view should be almos as fast as a dataset?
 * having the pieces on separated disks may be a benfefit when doing analyticcs;
 * do not know about recency and locality reference relation to key;
+* assume sorted on key;
 
     data combine/(view=combine);
       set
          group:
     run;quit;
+    
+    Added Enhancement
+    
+    Perhaps the op can just make a minor change to the interleave and split it into four tasks(or more).
+    No need for 25 files?
+    
+    If the files are sorted on key you can quicky find the split points for the big file using a binary search and
+    SAS record pointer. Observation number less than but closest to key=10000000, then use first obs and obs instead
+    of the where clause. Or create an index on the big big file. Use a where on the small ones and a and firstobs and obs 
+    on the large one?
+    
+    
+    
 
